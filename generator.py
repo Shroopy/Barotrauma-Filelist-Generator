@@ -17,7 +17,8 @@ for rootdir, dirs, files in Path(targetDir).walk():
 			tree = ET.parse(str(rootdir) + "/" + file)
 			root = tree.getroot()
 
-			if root.tag not in ("Item", "Character", "Afflictions", "BackgroundCreaturePrefabs", "BallastFlora", "CaveGenerationParameters", "Corpses", "Decals", "EventManagerSettings", "Factions", "ItemAssembly", "Jobs", "LevelGenerationParameters", "LevelObjectPrefabs","LocationTypes","MapGenerationParameters", "Missions", "NPCConversations","NPCPersonalityTraits", "NPCSets", "Orders", "OutpostConfig", "Particles", "RandomEvents", "RuinConfig", "ServerExecutable", "SkillSettings", "Sounds", "StartItems", "Structure", "Talents", "TalentTrees", "Text", "TraitorMissions", "Tutorials", "UIStyle", "UpgradeModules", "WreckAIConfig", "Other"):
+			tagtypes = ("Item", "Character", "Afflictions", "BackgroundCreaturePrefabs", "BallastFlora", "CaveGenerationParameters", "Corpses", "Decals", "EventManagerSettings", "Factions", "ItemAssembly", "Jobs", "LevelGenerationParameters", "LevelObjectPrefabs", "LocationTypes", "MapGenerationParameters", "Missions", "NPCConversations", "NPCPersonalityTraits", "NPCSets", "Orders", "OutpostConfig", "Particles", "RandomEvents", "RuinConfig", "ServerExecutable", "SkillSettings", "Sounds", "StartItems", "Structure", "Talents", "TalentTrees", "Text", "TraitorMissions", "Tutorials", "UIStyle", "UpgradeModules", "WreckAIConfig", "Other", "infotexts", "style")
+			if root.tag.lower() not in [s.lower() for s in tagtypes]:
 				continue
 			
 			line: str
